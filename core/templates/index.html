@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+     <!-- Header -->
+     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" 
+         style="min-height: 300px; background-image: url(/static/assets/img/theme/admin.png); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-1 text-white">¡ Hello ! {{ request.user.username }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt--7">
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <center style="height: 500px;">
+              <div class="card-header bg-transparent">
+                <h1 class="display-2" >Bienvenido - Panel de Administrador </h1>            
+              </div>
+            </center>
+            <div class="card-body">
+              <div class="row icon-examples">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
