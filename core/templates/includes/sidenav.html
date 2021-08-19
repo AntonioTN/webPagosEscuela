@@ -34,18 +34,13 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="/profile.html" class="dropdown-item">
+            <a href="{% url 'profile' %}" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            <a href="/profile.html" class="dropdown-item">
+            <a href="{% url 'profile' %}" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
-            </a>
-            <a href="/profile.html" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
             <div class="dropdown-divider"></div>
             <a href="{% url 'logout' %}" class="dropdown-item">
               <i class="ni ni-user-run"></i>
@@ -90,27 +85,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="/alumnos.html">
+            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="{% url 'alumnos' %}">
               <i class="ni ni-hat-3 text-blue"></i> Alumnos
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="/servicios.html">
+            <a class="nav-link {% if 'icons' in segment %} active {% endif %}" href="{% url 'servicios' %}">
               <i class="ni ni-paper-diploma text-yellow"></i> Servicios
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'maps' in segment %} active {% endif %}" href="/pagos.html">
+            <a class="nav-link {% if 'maps' in segment %} active {% endif %}" href="{% url 'pagos' %}">
               <i class="ni ni-money-coins text-green"></i> Pagos
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'tables' in segment %} active {% endif %}" href="/estadisticas.html">
+            <a class="nav-link {% if 'tables' in segment %} active {% endif %}" href="{% url 'estadisticas' %}">
               <i class="ni ni-chart-bar-32 text-purple"></i> Estadisticas
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if 'profile' in segment %} active {% endif %}" href="/profile.html">
+            <a class="nav-link {% if 'profile' in segment %} active {% endif %}" href="{% url 'profile' %}">
               <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
