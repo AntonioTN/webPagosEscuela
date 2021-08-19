@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Pagos {% endblock title %}
+
+{% block content %}
+
+     <!-- Header -->
+{% include "includes/header.html" %}
+
+    <div class="container-fluid mt--7">
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <h3 class="mb-0">Servicios</h3>
+            </div>
+            <div class="card-body" style="height: 500px;">
+              <div >
+                <button  type="button" class="btn btn-info btn-block"">Pago Constancia</button>
+                <br>
+                <button  type="button" class="btn btn-info btn-block">Pago kardex</button>
+                <br>
+                <button  type="button" class="btn btn-info btn-block">Pago Cuatrimestre</button>
+                <br>
+                <button  type="button" class="btn btn-info btn-block">Pago Extraordinario</button>
+                <br>
+                <button  type="button" class="btn btn-info btn-block">Pago seguro</button>
+                <br>
+                <button type="button" class="btn btn-info btn-block">Pago Titulo</button>
+                <br>
+                <button  type="button" class="btn btn-info btn-block">Pago Credencial Est</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

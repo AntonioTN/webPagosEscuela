@@ -1,0 +1,152 @@
+
+{% extends 'layouts/base.html' %}
+
+{% block title %} Pagos {% endblock title %}
+
+{% block content %}
+
+     <!-- Header -->
+{% include "includes/header.html" %}
+
+    <div class="container-fluid mt--7">
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <h3 class="mb-0">Pagos</h3>
+            </div>
+            <div class="card-body">
+                  
+              <script>
+                  ////////////variables////////
+                    var Matricula;
+                    var Alumno;
+                    var Carrera; 
+                    var Grado;
+                    var nombreProducto
+                    var precio;
+                    var cantidad;
+                    var total;
+                    var subtotal;
+                    var p=0;
+                    var iva;
+                    var subtotalP=0;
+                    var fecha= new Date();
+                    var imprimir;
+                    var numero_Factura=0;
+                  
+                  
+                  function generarFactura(){
+                  
+                    
+                    Matricula=document.getElementById("Matricula").value;
+                    Alumno=document.getElementById("Alumno").value;
+                    Carrera=document.getElementById("Carrera").value;
+                    Grado=document.getElementById("Grado").value;
+                  
+                    
+                    document.write(fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear()+"</br>"+"</br>"+"</br>");
+                    document.write("Matricula:"+'&nbsp;'+Matricula+"<br>"+"<br>");
+                    document.write(" Alumno :"+'&nbsp;'+Alumno+"<br>"+"<br>");
+                    document.write(" Carrera:"+'&nbsp;'+Carrera+"<br>"+"<br>");
+                    document.write(" Grado:"+'&nbsp;'+Grado+"<br>"+"<br>"+"<br>");
+                    
+                      
+                    for (subtotal=0; nombreProducto != "*"; subtotal++) {
+                    
+                    
+                    nombreProducto=prompt('Que va a pagar?');
+                    document.write("Pago de :  "+'&nbsp;'+nombreProducto+'&nbsp;'+'&nbsp;');
+                    
+                    precio=parseFloat(prompt('Ingresa el Precio'));
+                    document.write("Precio:  "+'&nbsp;'+precio+'&nbsp;'+'&nbsp;');
+                    
+                    cantidad=parseInt(prompt('Ingrese Cantidad'));
+                    document.write("Cantidad:  "+'&nbsp;'+cantidad+'&nbsp;'+'&nbsp;');
+                    
+                    
+                    nombreProducto=prompt('Ingrese "*" Para terminar o cualquier tecla para continuar');
+                    
+                      subtotal=precio*cantidad;
+                      subtotalP=subtotalP+parseInt(subtotal);
+                      iva=subtotalP*0.010;
+                      total=subtotalP+iva;
+                      
+                    
+                      document.write("SubTotal :"+'&nbsp;'+subtotal+"<br>"+"<br>"+"<br>");
+                      
+                    
+                    } 
+                    document.write("Subtotal : "+'&nbsp;'+subtotalP+"<br>"+"<br>");
+                    document.write("Iva 0.10% :"+'&nbsp;'+iva+"<br>"+"<br>");
+                    document.write("Total :"+'&nbsp;'+total+"<br>"+"<br>");
+                    document.write('<button onclick="window.print()">Imprimir Factura</button>');
+                    
+                    }
+                    
+                    generarFactura()
+              </script>
+                
+                <style type="">
+                  input, select {
+                      width: 100%;
+                      padding: 11px;
+                      box-sizing: border-box;
+                      font-size: 17px;
+                      border: none;
+                  }
+                  
+                    
+                  #principal {
+                      width: 75%;
+                  }
+                    
+                  #boton {
+                      background: rgb(9, 179, 60);
+                      color: #fff;
+                      padding: 15px;
+                      width: 20%;
+                  }
+                  
+                  #boton:hover {
+                      cursor: pointer;
+                  }
+                  
+                  @media (max-width:480px) {
+                      form {
+                          width: 100%;
+                      }
+                  }
+                </style>
+                <h1>Orden de Pagos</h1>
+                  <form id="principal">
+                    <br><input type="text" name="Matricula" id="Matricula" placeholder="Matricula"/><br><br>
+                    <br><input type="text" name="Alumno" id="Alumno" placeholder="Alumno" /><br><br>
+                    <br><input type="text" name="Carrera" id="Carrera" placeholder="Carrera" /><br><br>
+                    <br><input type="text" name="Grado" id="Grado" placeholder=" Grado|Grupo" /><br><br>
+                    <input type="button" id="boton" name="Continuar" onclick="generarFactura()"   value="Continuar"/>
+                  </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+
+    </div>
+
+
+  
+
+
+  
+
+
+    
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Pagos {% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+     <!-- Header -->
+{% include "includes/header.html" %}
+
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <h3 class="mb-0">Añadir alumno</h3>
+            </div>
+            <div class="card-body" style="height: 500px;">
+                    <form class="row g-3" method="POST" action="">
+                          {% csrf_token %}
+
+                          <div class="col-12">
+                            <label class="form-label">{{ form.nombre.label }}</label>
+                             {{form.nombre}}
+                          </div>
+                          <div class="col-12">
+                            <label class="form-label">{{ form.carrera.label }}</label>
+                             {{form.carrera}}
+                          </div>
+                          <div class="col-md-3">
+                            <label class="form-label">{{ form.grado.label }}</label>
+                             {{form.grado}}
+                          </div>
+                          <div class="col-md-2">
+                            <label class="form-label">{{ form.beca.label }}</label>
+                             {{form.beca}}
+                          </div>
+                            <br>
+                            <div style="text-align: center;">
+                              <button type="submit" class="btn btn-primary">Editar </button>
+                            </div>
+                      
+                    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
+

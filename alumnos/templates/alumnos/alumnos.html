@@ -1,0 +1,92 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Pagos {% endblock title %}
+
+{% block content %}
+
+     <!-- Header -->
+{% include "includes/header.html" %}
+
+    <div class="container-fluid mt--7">
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <h3 class="mb-0">Lista de Alumnos</h3>
+            </div>
+            <div class="card-body" >
+              
+
+                <style>
+                  #main-container{
+                    margin: 30px auto;
+                    width: 900px;
+                  }
+                  table{
+                    background-color: rgb(245, 245, 245);
+                    text-align: left;
+                    border-collapse: collapse;
+                    width: 100%;
+                  }
+        
+                  th, td{
+                    padding: 20px;
+                  }
+                  
+                  thead{
+                    background-color: #08c4fd;
+                    border-bottom: solid 3px #000000;
+                    color: rgb(0, 0, 0);
+                  }
+                  
+                  tr:nth-child(even){
+                    background-color: #ddd;
+                  }
+                  
+                  tr:hover td{
+                    background-color: #59e6ff;
+                    color: rgb(248, 248, 248);
+                  }
+
+                  a#agregar{
+                    margin: 20px auto;
+                  }
+                </style>
+                  <div id="main-container">
+                    <table>
+                      <thead>
+                        <tr>
+                            <th>Nombre</th><th>Carrera</th><th>Grado</th><th>Beca</th><th>Accion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for alumno in Alumnos %}
+                        <tr>
+                          
+                          <td>{{alumno.nombre}}</td>
+                          <td>{{alumno.carrera}}</td>
+                          <td>{{alumno.grado}}</td>
+                          <td>{{alumno.beca}}</td>
+                          <td>
+                            <a class="btn btn-outline-danger btn-sm" href="{% url 'eliminar' alumno.id %}" role="button">Eliminar</a>
+                            <a class="btn btn-outline-warning btn-sm" href="{% url 'editar' alumno.id %}">Editar</></td>
+                        </tr>
+
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                    <a id="agregar" class="btn btn-success" href="{% url 'agregar' %}">Agregar alumno</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
