@@ -101,7 +101,13 @@
                   #principal {
                       width: 75%;
                   }
-                    
+
+                  #pay{
+                    width: 17%;
+      
+                  }
+
+                
                   #boton {
                       background: rgb(9, 179, 60);
                       color: #fff;
@@ -119,7 +125,6 @@
                       }
                   }
                 </style>
-                <h1>Orden de Pagos</h1>
                   <form id="principal">
                     <br><input type="text" name="Matricula" id="Matricula" placeholder="Matricula"/><br><br>
                     <br><input type="text" name="Alumno" id="Alumno" placeholder="Alumno" /><br><br>
@@ -127,11 +132,20 @@
                     <br><input type="text" name="Grado" id="Grado" placeholder=" Grado|Grupo" /><br><br>
                     <input type="button" id="boton" name="Continuar" onclick="generarFactura()"   value="Continuar"/>
                   </form>
+
+                  <form id="pay" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="CH8JSQD3GGKPS">
+                    <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                    </form>
   
             </div>
           </div>
         </div>
       </div>
+
+      
 
       {% include "includes/footer.html" %}
 
