@@ -14,4 +14,4 @@ urlpatterns = [
     path('alumnos/', include('alumnos.urls')),
              # UI Kits Html files
     
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
