@@ -46,11 +46,6 @@ def pages(request):
 
 
 
-def servicios(request):
-        return render(request, "app/servicios.html")
-
-def estadisticas(request):
-        return render(request, "app/estadisticas.html")
 
 def profile(request):
         return render(request, "app/profile.html")

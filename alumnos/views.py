@@ -38,3 +38,9 @@ def editar(request, alumno_id):
         
     context = {"form" : form }
     return render(request, "alumnos/editar.html", context)
+
+
+# def registro_pagos(request):
+#     # alumno = Alumnos.objects.all()
+#     # context = {'Alumnos':alumno}
+#     return render(request, "alumnos/registro_pagos.html")

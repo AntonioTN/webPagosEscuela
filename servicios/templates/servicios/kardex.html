@@ -1,7 +1,6 @@
-
 {% extends 'layouts/base.html' %}
 
-{% block title %} Pagos {% endblock title %}
+{% block title %} PagoKardex {% endblock title %}
 
 {% block content %}
 
@@ -14,7 +13,7 @@
         <div class="col">
           <div class="card shadow">
             <div class="card-header bg-transparent">
-              <h3 class="mb-0">Pagos</h3>
+              <h3 class="mb-0">PAGO DE KARDEX</h3>
             </div>
             <div class="card-body">
                   
@@ -56,14 +55,14 @@
                     for (subtotal=0; nombreProducto != "*"; subtotal++) {
                     
                     
-                    nombreProducto=prompt('Que va a pagar');
-                    document.write("Pago de :  "+'&nbsp;'+nombreProducto+'&nbsp;'+'&nbsp;');
+                   
+                    document.write("PAGO DE :  "+'&nbsp;'+'KARDEX'+'&nbsp;'+'&nbsp;');
                     
                     precio=parseFloat(prompt('Ingresa el precio a pagar'));
-                    document.write("Precio:  "+'&nbsp;'+precio+'&nbsp;'+'&nbsp;');
+                    document.write(" PRECIO :  "+'&nbsp;'+precio+'&nbsp;'+'&nbsp;');
                     
-                    cantidad=parseInt(prompt('Cuantos pagos va a realizar'));
-                    document.write("Cantidad:  "+'&nbsp;'+cantidad+'&nbsp;'+'&nbsp;');
+                    cantidad=parseInt(prompt('Cuantos pagos de Kardex va a realizar'));
+                    document.write(" CANTIDAD :  "+'&nbsp;'+cantidad+'&nbsp;'+'&nbsp;');
                     
                     
                     nombreProducto=prompt('Ingrese "*" Para terminar o cualquier tecla para continuar');
@@ -74,11 +73,12 @@
                       total=subtotalP+iva;
                       
                     
-                      document.write("SubTotal :"+'&nbsp;'+subtotal+"<br>"+"<br>"+"<br>");
+                    
                       
                     
                     } 
-                    document.write("Subtotal : "+'&nbsp;'+subtotalP+"<br>"+"<br>");
+                    
+                    document.write("<br>"+"<br>"+"Subtotal : "+'&nbsp;'+subtotalP+"<br>"+"<br>");
                     document.write("Iva 0.10% :"+'&nbsp;'+iva+"<br>"+"<br>");
                     document.write("Total :"+'&nbsp;'+total+"<br>"+"<br>");
                     document.write('<button onclick="window.print()">Imprimir Factura</button>');
@@ -129,7 +129,7 @@
                     <br><input type="text" name="Matricula" id="Matricula" placeholder="Matricula"/><br><br>
                     <br><input type="text" name="Alumno" id="Alumno" placeholder="Alumno" /><br><br>
                     <br><input type="text" name="Carrera" id="Carrera" placeholder="Carrera" /><br><br>
-                    <br><input type="text" name="Grado" id="Grado" placeholder=" Grado" /><br><br>
+                    <br><input type="text" name="Grado" id="Grado" placeholder=" Grado|Grupo" /><br><br>
                     <input type="button" id="boton" name="Continuar" onclick="generarFactura()"   value="Continuar"/>
                   </form>
 

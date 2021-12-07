@@ -12,6 +12,7 @@ urlpatterns = [
     path("", include("app.urls")),
     path('pagos/', include('pagos.urls')),
     path('alumnos/', include('alumnos.urls')),
+    path('servicios/', include('servicios.urls')),
              # UI Kits Html files
     
 ]

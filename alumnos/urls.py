@@ -6,4 +6,5 @@ urlpatterns = [
     path ('agregar/', views.agregar, name="agregar"),
     path ('eliminar/<int:alumno_id>/', views.eliminar, name="eliminar"),
     path ('editar/<int:alumno_id>/', views.editar, name="editar"),
+   
 ]
