@@ -16,129 +16,147 @@
               <h3 class="mb-0">PAGO DE SEGURO</h3>
             </div>
             <div class="card-body">
-                  
+
+              
               <script>
-                  ////////////variables////////
-                    var Matricula;
-                    var Alumno;
-                    var Carrera; 
-                    var Grado;
-                    var nombreProducto;
-                    var precio;
-                    var cantidad;
-                    var total;
-                    var subtotal;
-                    var p=0;
-                    var iva;
-                    var subtotalP=0;
-                    var fecha= new Date();
-                    var imprimir;
-                    var numero_Factura=0;
-                  
-                  
-                  function generarFactura(){
-                  
-                    
+
+                var Alumno;
+                var Matricula;
+                var Carrera;
+                var Grado;
+                var costo;
+              
+              
+                function fnReporte()
+                {
+              
                     Matricula=document.getElementById("Matricula").value;
                     Alumno=document.getElementById("Alumno").value;
                     Carrera=document.getElementById("Carrera").value;
                     Grado=document.getElementById("Grado").value;
+                    costo=document.getElementById("costo").value;
+              
+                    var fecha= new Date();
+                    // Solicita el Usuario 
                   
-                    
-                    document.write(fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear()+"</br>"+"</br>"+"</br>");
-                    document.write("Matricula:"+'&nbsp;'+Matricula+"<br>"+"<br>");
-                    document.write(" Alumno :"+'&nbsp;'+Alumno+"<br>"+"<br>");
-                    document.write(" Carrera:"+'&nbsp;'+Carrera+"<br>"+"<br>");
-                    document.write(" Grado:"+'&nbsp;'+Grado+"<br>"+"<br>"+"<br>");
-                    
-                      
-                    for (subtotal=0; nombreProducto != "*"; subtotal++) {
-                    
-                    
-                   
-                    document.write("PAGO DE :  "+'&nbsp;'+'SEGURO'+'&nbsp;'+'&nbsp;');
-                    
-                    precio=parseFloat(prompt('Ingresa el precio a pagar'));
-                    document.write(" PRECIO :  "+'&nbsp;'+precio+'&nbsp;'+'&nbsp;');
-                    
-                    cantidad=parseInt(prompt('Cuantos pagos de Seguro va a realizar'));
-                    document.write(" CANTIDAD :  "+'&nbsp;'+cantidad+'&nbsp;'+'&nbsp;');
-                    
-                    
-                    nombreProducto=prompt('Ingrese "*" Para terminar o cualquier tecla para continuar');
-                    
-                      subtotal=precio*cantidad;
-                      subtotalP=subtotalP+parseInt(subtotal);
-                      iva=subtotalP*0.010;
-                      total=subtotalP+iva;
-                      
-                    
-                    
-                      
-                    
-                    } 
-                    
-                    document.write("<br>"+"<br>"+"Subtotal : "+'&nbsp;'+subtotalP+"<br>"+"<br>");
-                    document.write("Iva 0.10% :"+'&nbsp;'+iva+"<br>"+"<br>");
-                    document.write("Total :"+'&nbsp;'+total+"<br>"+"<br>");
-                    document.write('<button onclick="window.print()">Imprimir Factura</button>');
-                    
+                    // Solicita un Código
+                    var Pago = "Seguro";  
+                  
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if (dd < 10) {
+                      dd = '0' + dd;
                     }
                     
-                    generarFactura()
-              </script>
-                
-                <style type="">
-                  input, select {
-                      width: 100%;
-                      padding: 11px;
-                      box-sizing: border-box;
-                      font-size: 17px;
-                      border: none;
-                  }
-                  
+                    if (mm < 10) {
+                      mm = '0' + mm;
+                    }
                     
-                  #principal {
-                      width: 75%;
-                  }
+                    today = mm + '/' + dd + '/' + yyyy;
+              
+                    // Creo el Objeto pdf
+                    let doc = new jsPDF('Portrait');
+              
+                    // Optional - set properties on the document
+                    doc.setProperties({
+                        title: 'Orden de Pago',
+                        subject: 'Universidad Tecnologica de Tecamachalco',
+                        author: 'JAOR',
+                        keywords: 'reporte, javascript, web 2.0, ajax',
+                        creator: 'JAOR'
+                    });
+              
+              
+                    // Establezco la fuente y tamaño
+                    doc.setFontSize(24);         
+                    doc.setTextColor(20, 20);   
+                    
+                    // Mando un Texto
+                    doc.text('Orden de Pago',75, 16); 
+                    doc.text('Universidad Tecnologica de Tecamachalco',25, 30);                   
+                    doc.setFont("helvetica");
+                    doc.setFontType("bold");
+                    doc.setFontSize(10);            
+                    doc.setFont("helvetica");
+                    doc.setFontType("bold");
+                    doc.setTextColor(20, 20);
+                    doc.text("Fecha: " + today,15, 50); 
+                    doc.text("Estudiante: " + Alumno,15, 60);       
+                    doc.text("Matricula: " + Matricula ,15, 70);
+                    doc.text("Carrera: " + Carrera ,15, 80);
+                    doc.text("Grado: " + Grado ,15, 90);
+                    doc.text("Tipo de Pago: " + Pago ,15,100); 
+                    doc.text("El costo de tu pago es: " + costo ,15, 110);
+              
+                    // Defino dataURL
+                    dataURL = "data:image/png;base64,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";
+              
+                    // Cargo la imagen
+                    doc.addImage(dataURL,'png', 10, 8);
+                    doc.setDrawColor(0,0,255); // draw red lines
+                    doc.setLineWidth(1.5);
+                    doc.line(20, 35, 190, 35);
+              
+                    doc.setDrawColor(0,0,255); // draw red lines
+                    doc.setLineWidth(1.5);
+                    doc.line(30, 35, 190, 35);
+                    
+              
+                    // Salvo el documento
+                    doc.save();
+              
+                }
+              </script>
+              
+                      <style type="">
+                        input, select {
+                            width: 100%;
+                            padding: 11px;
+                            box-sizing: border-box;
+                            font-size: 17px;
+                            border: none;
+                        }
+                        
+                          
+                        #principal {
+                            width: 75%;
+                        }
+              
+                        #pay{
+                          width: 17%;
+              
+                        }
+              
+              
+                        #boton {
+                            background: rgb(9, 179, 60);
+                            color: #fff;
+                            padding: 15px;
+                            width: 20%;
+                        }
+                        
+                        #boton:hover {
+                            cursor: pointer;
+                        }
+                        
+                        @media (max-width:480px) {
+                            form {
+                                width: 100%;
+                            }
+                        }
+                      </style>
+                        <form id="principal">
+                          <br><input type="number" name="Matricula" id="Matricula" placeholder="Matricula"/><br><br>
+                          <br><input type="text" name="Alumno" id="Alumno" placeholder="Alumno" /><br><br>
+                          <br><input type="text" name="Carrera" id="Carrera" placeholder="Carrera" /><br><br>
+                          <br><input type="text" name="Grado" id="Grado" placeholder=" Grado" /><br><br>
+                          <br><input type="number" name="costo" id="costo" placeholder=" Costo $" /><br><br>
+                          <input type="button" id="boton" name="Continuar" onclick="fnReporte()"   value="Continuar"/>
+                        </form>  
 
-                  #pay{
-                    width: 17%;
-      
-                  }
-
-                
-                  #boton {
-                      background: rgb(9, 179, 60);
-                      color: #fff;
-                      padding: 15px;
-                      width: 20%;
-                  }
-                  
-                  #boton:hover {
-                      cursor: pointer;
-                  }
-                  
-                  @media (max-width:480px) {
-                      form {
-                          width: 100%;
-                      }
-                  }
-                </style>
-                  <form id="principal">
-                    <br><input type="text" name="Matricula" id="Matricula" placeholder="Matricula"/><br><br>
-                    <br><input type="text" name="Alumno" id="Alumno" placeholder="Alumno" /><br><br>
-                    <br><input type="text" name="Carrera" id="Carrera" placeholder="Carrera" /><br><br>
-                    <br><input type="text" name="Grado" id="Grado" placeholder=" Grado|Grupo" /><br><br>
-                    <input type="button" id="boton" name="Continuar" onclick="generarFactura()"   value="Continuar"/>
-                  </form>
-
-                  <!-- <form id="pay" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="CH8JSQD3GGKPS">
-                    <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-                    </form> -->
+              
   
             </div>
           </div>
@@ -163,4 +181,4 @@
 {% endblock content %}
 
 <!-- Specific JS goes HERE --> 
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}  <script src="/static/assets/js/jspdf.min.js"></script> {% endblock javascripts %}
